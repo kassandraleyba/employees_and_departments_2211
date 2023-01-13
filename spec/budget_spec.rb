@@ -37,11 +37,12 @@ RSpec.describe Budget do
       budget.add_department(customer_service)
       budget.add_department(administration)
       budget.add_department(marketing)
-
+      
       customer_service.expense(200)
       administration.expense(50)
       marketing.expense(600)
 
+      expect(budget.budget_amount).to eq(500)
       expect(budget.department_expenses).to eq([customer_service, administration])
     end
   end
