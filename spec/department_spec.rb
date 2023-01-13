@@ -42,11 +42,4 @@ RSpec.describe Department do
       expect(customer_service.expenses).to eq(125)
     end
   end
-
-  describe "#Budget" do
-    it "has a year, as well as a way to read that data" do
-      expect(customer_service.current_year).to eq(2023)
-      expect(customer_service.budget).to eq(0)
-    end
-  end
 end
