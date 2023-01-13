@@ -13,7 +13,19 @@ class Budget
     @departments << department
   end
 
-  def departments
-    @departments
+  def department_expenses
+    @departments.find_all do |department|
+      department.expenses < 500
+    end
+  end
+
+  def employee_salary
+    employee_salary = []
+    @departments.each do |department|
+      department.employees.each do |employee|
+        employee_salary << employee.salary
+      end
+    end
+    employee_salary
   end
 end

@@ -33,14 +33,31 @@ RSpec.describe Budget do
       expect(budget.departments).to eq([customer_service, administration, marketing])
     end
 
-    xit "can list all departments with expenses less than $500" do
+    it "can list all departments with expenses less than $500" do
+      budget.add_department(customer_service)
+      budget.add_department(administration)
+      budget.add_department(marketing)
 
+      customer_service.expense(200)
+      administration.expense(50)
+      marketing.expense(600)
+
+      expect(budget.department_expenses).to eq([customer_service, administration])
     end
   end
 
   describe "#Salary" do
-    xit "can list all employees' salaries" do
-      
+    it "can list all employees' salaries" do
+      budget.add_department(customer_service)
+      budget.add_department(marketing)
+
+      customer_service.hire(bobbi)
+      marketing.hire(aaron)
+
+      bobbi.salary
+      aaron.salary
+
+      expect(budget.employee_salary).to eq([100000, 90000])
     end
   end
 end
