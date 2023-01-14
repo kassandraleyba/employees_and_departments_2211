@@ -19,8 +19,8 @@ RSpec.describe Budget do
 
   describe "#Has a year" do
     it "has a year, as well as a way to read that data" do
+      
       expect(budget.current_year).to eq(2023)
-      expect(budget.budget_amount).to eq(0)
     end
   end
 
@@ -42,8 +42,7 @@ RSpec.describe Budget do
       administration.expense(50)
       marketing.expense(600)
 
-      expect(budget.budget_amount).to eq(500)
-      expect(budget.department_expenses).to eq([customer_service, administration])
+      expect(budget.expenses_less_than(500)).to eq([customer_service, administration])
     end
   end
 
